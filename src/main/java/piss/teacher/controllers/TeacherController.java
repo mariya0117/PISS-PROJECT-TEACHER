@@ -8,27 +8,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TeacherController {
 
     @RequestMapping("/")
-    public String redirToList(){
+    public String redirectToMenu(){
         return "redirect:/menu";
     }
 
     @RequestMapping({"/menu"})
-    public String listProducts(Model model){
+    public String menu(Model model){
         return "menu";
     }
 
     @RequestMapping("/test/new")
-    public String getProduct(Model model){
+    public String newTest(Model model){
         return "test/new";
     }
 
     @RequestMapping("/test/results")
-    public String edit(Model model){
+    public String getResults(Model model){
         return "test/results";
     }
 
     @RequestMapping("/test/all")
-    public String newProduct(Model model){
+    public String getTests(Model model){
         return "test/all";
     }
 
