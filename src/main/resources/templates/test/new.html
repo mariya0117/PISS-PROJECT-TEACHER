@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Нов тест</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
-          rel="stylesheet" media="screen"/>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+        rel="stylesheet" media="screen" />
 
-    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
-            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
 </head>
-<body>
-<div class="container">
-    <header>Нов тест</header>
-    Въпрос: <input type="text"></input><br></br>
-    Отговор: <input type="text"></input><br></br>
-    Това правилния отговор ли е? <input type="checkbox"></input><br></br>
-    <input type="submit" value="Добави отговор"></input>
-</div>
 
+<body>
+    <div class="container">
+        <header>Нов тест</header>
+        Въпрос: <input type="text"></input><br></br>
+        Отговор: <input type="text"></input><br></br>
+        Това правилния отговор ли е? <input type="checkbox"></input><br></br>
+        <input type="submit" value="Добави отговор" method="POST" action="http://localhost:8080/test"></input>
+    </div>
 </body>
+
 </html>

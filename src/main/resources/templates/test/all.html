@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Моите тестове</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
-          rel="stylesheet" media="screen"/>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+        rel="stylesheet" media="screen" />
 
-    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
-            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
 </head>
-<body>
-<div class="container">
-    Моите тестове
-</div>
 
+<body>
+    <div class="container">
+        Моите тестове
+    </div>
+    <div>
+        <table>
+            <thead>
+                <th>
+                    Tests
+                </th>
+            </thead>
+            <tbody id="tests">
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $.get('localhost', function (data) {
+            if (!!data) {
+                data.forEach(function (test) {
+                    $('<tr><td><a href="/tests/search')
+                        .append(test.id).append('" value="').append(test.name)
+                        .append('"></td><tr>').appendTo($('#tests'))
+                });
+            }
+        });
+
+    </script>
 </body>
+
 </html>
