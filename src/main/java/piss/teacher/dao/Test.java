@@ -14,6 +14,9 @@ public class Test {
 
     private String subject;
 
+    public Test() {
+    }
+
     public Test(ObjectId teacherId, String subject) {
         this.teacherId = teacherId;
         this.subject = subject;

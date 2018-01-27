@@ -5,21 +5,24 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Question {
+public class TestResult {
 
     @Id
     private ObjectId _id;
 
     private ObjectId testId;
 
-    private String question;
+    private String studentName;
 
-    public Question() {
+    private String mark;
+
+    public TestResult() {
     }
 
-    public Question(ObjectId testId, String question) {
+    public TestResult(ObjectId testId, String studentName, String mark) {
         this.testId = testId;
-        this.question = question;
+        this.studentName = studentName;
+        this.mark = mark;
     }
 
     public ObjectId getId() {
@@ -38,12 +41,20 @@ public class Question {
         this.testId = testId;
     }
 
-    public String getQuestion() {
-        return question;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
     }
 
 }

@@ -18,6 +18,9 @@ public class Teacher {
 
     private String lastName;
 
+    public Teacher() {
+    }
+
     public Teacher(String username, String password, String firstName, String lastName) {
         this.username = username;
         this.password = password;

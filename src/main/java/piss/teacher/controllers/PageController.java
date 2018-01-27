@@ -1,11 +1,19 @@
 package piss.teacher.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import piss.teacher.dao.Test;
+import piss.teacher.repositories.TestRepository;
+
 @Controller
-public class TeacherController {
+public class PageController {
+
+    @Autowired
+    TestRepository testRepository;
 
     @RequestMapping("/")
     public String redirectToMenu(){
@@ -32,4 +40,8 @@ public class TeacherController {
         return "test/all";
     }
 
+    @RequestMapping("/test")
+    public void saveTest(@RequestBody Test test){
+        testRepository.save(test);
+    }
 }

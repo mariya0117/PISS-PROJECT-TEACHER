@@ -2,7 +2,9 @@ package piss.teacher.dao;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Answer {
     @Id
     private ObjectId _id;
@@ -12,6 +14,9 @@ public class Answer {
     private String answer;
 
     private boolean isCorrect;
+
+    public Answer() {
+    }
 
     public Answer(ObjectId questionId, String answer, boolean isCorrect) {
         this.questionId = questionId;
