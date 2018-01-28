@@ -9,16 +9,78 @@
 
 <body>
     <div class="container">
-        <header>Нов тест</header>
-        <form method="POST" action="http://localhost:8080/test">
-        Въпрос: <input type="text"></input><br></br>
-        Отговор: <input type="text"></input><br></br>
-        Това правилния отговор ли е? <input type="checkbox"></input><br></br>
-        <input type="submit" value="Добави отговор"></input>
-        <input type="submit" value="Добави въпроса"></input>
-        <input type="submit" value="Завършване на теста"></input>
-        </form>
+        <header>Нов Въпрос</header>
     </div>
+
+    <div class="container">
+        <form th:action="@{/question}" method="POST" enctype='application/json'>
+            <label for="question">Въпрос: </label>
+            <input type="text" class="subject" id="questionText" name="questionText"></input><br></br>
+            <table>
+                <tbody>Нов Въпрос</tbody>
+                <tr name="answer[]" value="1">
+                    <td><label>Отговор: </label> </td>
+                    <td><input type="text" id="answerText1"></input>
+                    </td>
+                    <td><input type="checkbox" id="isCorrect1"></input>
+                    </td>
+                </tr>
+                <tr name="answer[]" value="2">
+                    <td><label>Отговор: </label> </td>
+                    <td><input type="text" id="answerText2"></input>
+                    </td>
+                    <td><input type="checkbox" id="isCorrect2"></input>
+                    </td>
+                </tr>
+                <tr name="answer[]" value="3">
+                    <td><label>Отговор: </label> </td>
+                    <td><input type="text" id="answerText3"></input>
+                    </td>
+                    <td><input type="checkbox" id="isCorrect3"></input>
+                    </td>
+                </tr>
+                <tr name="answer[]" value="4">
+                    <td><label>Отговор: </label> </td>
+                    <td><input type="text" id="answerText4"></input>
+                    </td>
+                    <td><input type="checkbox" id="isCorrect4"></input>
+                    </td>
+                </tr>
+            </table>
+            <input type="button" onclick="submitForm()" value="Създай въпрос"></input>
+        </form>
+        <input type="submit" value="Завършване на теста"></input>
+    </div>
+
+    <script>
+        function submitForm() {
+            $.ajax({
+                type: "POST",
+                url: "/" + $(location).attr('href').substr($(location).attr('href').lastIndexOf('/') + 1) + "/question",
+                data: collectData(),
+                success: function () { },
+                dataType: "json",
+                contentType: "application/json"
+            });
+            location.reload();
+        }
+
+        function collectData() {
+            var result = {};
+            result.questionText = document.getElementById('questionText').value;
+            var answersNodeList = document.getElementsByName('answer[]');
+            var answers = [];
+            answersNodeList.forEach(function (answerNode) {
+                var index = answerNode.getAttribute('value');
+                var answer = {};
+                answer.answerText = document.getElementById("answerText" + index).value;
+                answer.isCorrect = document.getElementById("isCorrect" + index).checked;
+                answers.push(answer);
+            });
+            result.answers = answers;
+            return JSON.stringify(result);
+        }
+    </script>
 </body>
 
 </html>

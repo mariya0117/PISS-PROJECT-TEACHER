@@ -41,11 +41,11 @@ public class AddQuestionRequest {
 			this.answerText = answer;
 		}
 
-		public Boolean isCorrect() {
+		public Boolean getIsCorrect() {
 			return isCorrect;
 		}
 
-		public void setCorrect(Boolean isCorrect) {
+		public void setIsCorrect(Boolean isCorrect) {
 			this.isCorrect = isCorrect;
 		}
 

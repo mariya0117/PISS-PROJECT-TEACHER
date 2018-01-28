@@ -32,7 +32,6 @@ public class QuestionController {
 	@RequestMapping(value = "/{testId}/question", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void addQuestion(@PathVariable("testId") String testId, @RequestBody AddQuestionRequest question) {
 		Question questionEntity = new Question();
-		questionEntity.setId(new ObjectId());
 		questionEntity.setQuestion(question.getQuestionText());
 		questionEntity.setTestId(new ObjectId(testId));
 
@@ -40,9 +39,8 @@ public class QuestionController {
 		ObjectId questionId = reloadedEntity.getId();
 		for (AnswerRequest answerReqest : question.getAnswers()) {
 			Answer answerEntity = new Answer();
-			answerEntity.setId(new ObjectId());
 			answerEntity.setAnswer(answerReqest.getAnswerText());
-			answerEntity.setCorrect(answerReqest.isCorrect());
+			answerEntity.setCorrect(answerReqest.getIsCorrect());
 			answerEntity.setQuestionId(questionId);
 			answerRepository.save(answerEntity);
 		}
