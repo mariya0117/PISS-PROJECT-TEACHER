@@ -4,21 +4,15 @@
 <head>
     <title>Нов тест</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
-        rel="stylesheet" media="screen" />
-
-    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
 <body>
     <div class="container">
         <header>Нов тест</header>
-        <form method="POST" action="http://localhost:8080/test">
-        Въпрос: <input type="text"></input><br></br>
-        Отговор: <input type="text"></input><br></br>
-        Това правилния отговор ли е? <input type="checkbox"></input><br></br>
-        <input type="submit" value="Добави отговор"></input>
+        <form th:object="${test}" th:action="@{/test}" method="POST">
+        Предмет: <input type="text" class="subject" th:field="*{subject}"></input><br></br>
+        <input type="submit" value="Продължи"></input>
         </form>
     </div>
 </body>

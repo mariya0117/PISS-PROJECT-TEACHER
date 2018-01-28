@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Нов тест</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>Нов тест</header>
+        <form method="POST" action="http://localhost:8080/test">
+        Въпрос: <input type="text"></input><br></br>
+        Отговор: <input type="text"></input><br></br>
+        Това правилния отговор ли е? <input type="checkbox"></input><br></br>
+        <input type="submit" value="Добави отговор"></input>
+        <input type="submit" value="Добави въпроса"></input>
+        <input type="submit" value="Завършване на теста"></input>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,10 +1,13 @@
 package piss.teacher.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import piss.teacher.dao.Test;
 import piss.teacher.repositories.TestRepository;
@@ -27,6 +30,7 @@ public class PageController {
 
     @RequestMapping("/test/new")
     public String newTest(Model model){
+        model.addAttribute("test", new Test());
         return "test/new";
     }
 
@@ -40,8 +44,15 @@ public class PageController {
         return "test/all";
     }
 
-    @RequestMapping("/test")
-    public void saveTest(@RequestBody Test test){
-        testRepository.save(test);
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public String saveTest(@Valid Test test){
+        test = testRepository.save(test);
+
+        return "redirect:/test/questions/" + test.getId();
+    }
+
+    @RequestMapping("/test/questions/{testId}")
+    public String getProduct(@PathVariable String testId, Model model){
+        return "test/questions/" + testId;
     }
 }
