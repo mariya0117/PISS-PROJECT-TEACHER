@@ -3,18 +3,25 @@
 <head>
     <title>Резултати от тестове</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
-    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
-          rel="stylesheet" media="screen"/>
-
-    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
-            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
 <div class="container">
     Резултати от тестове
+    <div th:if="${not #lists.isEmpty(results)}">
+        <table class="table table-striped">
+            <tr>
+                <th>ИД на теста</th>
+                <th>Име на студент</th>
+                <th>Оценка</th>
+            </tr>
+            <tr th:each="result : ${results}">
+                <td th:text="${result.testId.toHexString()}"></td>
+                <td th:text="${result.studentName}"></td>
+                <td th:text="${result.mark}"></td>
+            </tr>
+        </table>
+    </div>
 </div>
-
 </body>
 </html>

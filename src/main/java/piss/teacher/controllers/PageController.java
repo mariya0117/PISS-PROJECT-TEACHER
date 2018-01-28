@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import piss.teacher.dao.Test;
 import piss.teacher.repositories.TestRepository;
+import piss.teacher.repositories.TestResultRepository;
 
 @Controller
 public class PageController {
 
     @Autowired
     TestRepository testRepository;
+
+    @Autowired
+    TestResultRepository testResultRepository;
 
     @RequestMapping("/")
     public String redirectToMenu(){
@@ -36,6 +40,7 @@ public class PageController {
 
     @RequestMapping("/test/results")
     public String getResults(Model model){
+        model.addAttribute("results", testResultRepository.findAll());
         return "test/results";
     }
 
