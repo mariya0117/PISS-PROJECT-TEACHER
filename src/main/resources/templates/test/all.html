@@ -4,41 +4,33 @@
 <head>
     <title>Моите тестове</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
-        rel="stylesheet" media="screen" />
-
-    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
 <body>
     <div class="container">
         Моите тестове
+        <div th:if="${not #lists.isEmpty(tests)}">
+            <div th:each="test : ${tests}">
+                <h4>ИД на теста: <div style="display: inline" th:text="${test.test.id.toHexString()}"></div></h4>
+                <h4>Предмет: <div style="display: inline" th:text="${test.test.subject}"></div></h4>
+                <div th:each="question : ${test.questions}">
+                    <div>Въпрос: <div style="display: inline" th:text="${question.question.question}"></div></div>
+                    <div th:each="answer : ${question.answers}">
+                        <div style="display: inline" th:if="${answer.isCorrect}">
+                            <input type="checkbox" checked="checked"></input>
+                        </div>
+                        <div style="display: inline" th:unless="${answer.isCorrect}">
+                            <input type="checkbox"></input>
+                        </div>
+                        <div>Отговор: <div style="display: inline" th:text="${answer.answer}"></div></div>
+                    </div>
+                </div>
+            </div>
+            <br></br>
+            <br></br>
+        </div>
     </div>
-    <div>
-        <table>
-            <thead>
-                <th>
-                    Tests
-                </th>
-            </thead>
-            <tbody id="tests">
-
-            </tbody>
-        </table>
-    </div>
-    <script>
-        $.get('localhost', function (data) {
-            if (!!data) {
-                data.forEach(function (test) {
-                    $('<tr><td><a href="/tests/search')
-                        .append(test.id).append('" value="').append(test.name)
-                        .append('"></td><tr>').appendTo($('#tests'))
-                });
-            }
-        });
-
-    </script>
 </body>
 
 </html>
