@@ -52,7 +52,7 @@ public class PageController {
     }
 
     @RequestMapping("/test/questions/{testId}")
-    public String getProduct(@PathVariable String testId, Model model){
-        return "test/questions/" + testId;
+    public String getProduct(@PathVariable("testId") String testId, Model model){
+        return "test/questions";
     }
 }
