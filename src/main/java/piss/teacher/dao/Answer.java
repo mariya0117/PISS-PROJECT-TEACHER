@@ -14,7 +14,7 @@ public class Answer {
 
     private String answer;
 
-    public boolean isCorrect;
+    private boolean isCorrect;
 
     public Answer() {
     }
@@ -49,11 +49,11 @@ public class Answer {
         this.answer = answer;
     }
 
-    public boolean isCorrect() {
+    public boolean getIsCorrect() {
         return isCorrect;
     }
 
-    public void setCorrect(boolean isCorrect) {
+    public void setIsCorrect(boolean isCorrect) {
         this.isCorrect = isCorrect;
     }
 

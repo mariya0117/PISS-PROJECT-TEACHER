@@ -41,7 +41,7 @@ public class PageController {
         return "redirect:/menu";
     }
 
-    @RequestMapping({"/menu"})
+    @RequestMapping(value = "/menu", method = RequestMethod.GET)
     public String menu(Model model){
         return "menu";
     }
