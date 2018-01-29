@@ -14,7 +14,7 @@ public class Answer {
 
     private String answer;
 
-    private boolean isCorrect;
+    public boolean isCorrect;
 
     public Answer() {
     }

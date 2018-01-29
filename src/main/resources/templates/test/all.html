@@ -17,10 +17,10 @@
                 <div th:each="question : ${test.questions}">
                     <div>Въпрос: <div style="display: inline" th:text="${question.question.question}"></div></div>
                     <div th:each="answer : ${question.answers}">
-                        <div style="display: inline" th:if="'${answer.isCorrect}' == 'true'">
+                        <div style="display: inline" th:if="${answer.isCorrect}">
                             <input style="display: inline" type="checkbox" checked="checked"></input>
                         </div>
-                        <div style="display: inline" th:unless="'${answer.isCorrect}' == 'false'">
+                        <div style="display: inline" th:if="${!answer.isCorrect}">
                             <input style="display: inline" type="checkbox"></input>
                         </div>
                         <div style="display: inline" th:text="${answer.answer}"></div>
